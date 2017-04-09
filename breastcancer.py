@@ -57,9 +57,6 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 
 
-
-
-
 #%% Get and Clean Data
 
 d = pd.read_csv('diagnostic.csv')
@@ -254,10 +251,12 @@ for i in range(10):
 #  Visualize Random Forest Confusion Matrix
 plt.rcParams['figure.figsize']=(12,8)
 ax = plt.axes()
-s.heatmap(cmatrix, annot=True, fmt='d', ax=ax, cmap='coolwarm')
+s.heatmap(cmatrix, annot=True, fmt='d', ax=ax, cmap='coolwarm', annot_kws={"size": 30})
 ax.set_title('Random Forest Confusion Matrix')
 
-#%%
+
+#%% **-## Not Working ##-**
+
 # Random Forest ROC Curve
 # calculate the fpr and tpr for all thresholds of the classification
 probs = forest.predict_proba(x_test)
@@ -278,8 +277,6 @@ plt.xlabel('False Positive Rate')
 plt.show()
 
 #%%Feature importances
-
-
 
 importances = forest.feature_importances_
 indices = np.argsort(importances)[::-1]
@@ -330,7 +327,7 @@ for i in range(10):
 #   Visualize SVM Confusion Matrix
 plt.rcParams['figure.figsize']=(12,8)
 ax = plt.axes()
-s.heatmap(svm_cm, annot=True, fmt='d', ax=ax, cmap="YlGnBu")
+s.heatmap(svm_cm, annot=True, fmt='d', ax=ax, cmap="YlGnBu", annot_kws={"size": 30})
 ax.set_title('Support Vector Machine Confusion Matrix')
 
 
@@ -368,6 +365,6 @@ for i in range(10):
 #   Visualize MLP Confusion Matrix
 plt.rcParams['figure.figsize']=(12,8)
 ax = plt.axes()
-s.heatmap(mlp_cm, annot=True, fmt='d', ax=ax)
+s.heatmap(mlp_cm, annot=True, fmt='d', ax=ax, annot_kws={"size": 30})
 ax.set_title('Multilayer Perceptron Confusion Matrix')
 
